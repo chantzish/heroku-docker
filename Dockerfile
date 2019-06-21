@@ -18,7 +18,7 @@ RUN echo 1234 | sudo -S apt update && sudo apt install -y whiptail apt-utils lib
     sudo apt install -y /home/user/x11vnc_0.9.16-0_i386.deb && \
     mkdir /home/user/.vnc && \
     x11vnc -storepasswd frimon /home/user/.vnc/passwd && \
-    sudo sed -i 's/${WEBSOCKIFY} ${SSLONLY} --web ${WEB} ${CERT:+--cert ${CERT}} ${PORT} ${VNC_DEST} ${RECORD_ARG}/${WEBSOCKIFY} ${SSLONLY} --heartbeat=45 --web ${WEB} ${CERT:+--cert ${CERT}} ${PORT} ${VNC_DEST} ${RECORD_ARG}/' /opt/noVNC/utils/launch.sh && \
+    sudo sed -i 's/${WEBSOCKIFY} ${SSLONLY} --web ${WEB}/${WEBSOCKIFY} ${SSLONLY} --heartbeat=45 --web ${WEB}/' /opt/noVNC/utils/launch.sh && \
     echo '#!/bin/sh\n\nwhile :; do wget fccnp6.herokuapp.com -q -O /dev/null -o /dev/null; sleep 4m; done &' | sudo tee /usr/local/sbin/stop.sh && sudo chmod +x /usr/local/sbin/stop.sh && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && echo export LANG=en_IL >> .profile && echo export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386/ >> .profile && \
     sudo rm /etc/xdg/autostart/update-notifier.desktop && sudo sed -i 's/assistive_technologies=org.GNOME.Accessibility.AtkWrapper/#assistive_technologies=org.GNOME.Accessibility.AtkWrapper/' /etc/java-8-openjdk/accessibility.properties

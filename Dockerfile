@@ -1,4 +1,4 @@
-FROM i386/ubuntu
+FROM ubuntu
 RUN apt update && apt install -y sudo && useradd -u 1000 -U -G adm,cdrom,sudo,dip,plugdev -m user && yes "1234" | passwd user
 USER user
 WORKDIR /home/user

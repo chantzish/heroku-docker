@@ -99,7 +99,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo unzip android-2.0_r01-linux.zip -d /opt/android-sdk/platforms/ &&\
     sudo mv /opt/android-sdk/platforms/android-2.0_r01-linux/ /opt/android-sdk/platforms/android-2.0_r01/ && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
-    sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa
+    sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
+    curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf
 COPY nginx.template /home/user/nginx.template

@@ -76,7 +76,7 @@ RUN echo 1234 | sudo -S apt update && \
     mkdir /home/user/.vnc && \
     x11vnc -storepasswd frimon /home/user/.vnc/passwd && \
     sudo sed -i 's/${WEBSOCKIFY} ${SSLONLY} --web ${WEB}/${WEBSOCKIFY} ${SSLONLY} --heartbeat=45 --web ${WEB}/' /opt/noVNC/utils/launch.sh && \
-    echo '#!/bin/sh\n\nwhile :; do wget fccnp6.herokuapp.com -q -O /dev/null -o /dev/null; sleep 4m; done &' | sudo tee /usr/local/sbin/stop.sh && \
+    echo '#!/bin/sh\n\nwhile :; do wget fccnp5.herokuapp.com -q -O /dev/null -o /dev/null; sleep 4m; done &' | sudo tee /usr/local/sbin/stop.sh && \
     sudo chmod +x /usr/local/sbin/stop.sh && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && \
     sudo chmod +x jdk-6u45-linux-x64.bin && \

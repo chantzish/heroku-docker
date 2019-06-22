@@ -64,7 +64,8 @@ RUN echo 1234 | sudo -S apt update && \
         binutils-arm-linux-gnueabi \
         gcc-arm-linux-gnueabi \
         #openjdk-8-jdk \
-        cgroup-tools && \
+        cgroup-tools \
+        libqt4-dev && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \
     echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCpQbtDyDDhGwUDexAttZlT+pw4vnqcQeLAyg+f8Rzf9mhO2lD1/OcTakj6o1x7RpB+kWU3v0b8Z+RggJYJl02T9kDw9T9bw33Oj80d6mGFqgK3CyAAHRfda6VAQC220LbhgiOfUuTByHrEDGGpSwEF8pcIP9/W5Cm3x4ygiUhEw5vTm0VeywS+PS5338pWA8c6RQXlzVLLqSg6VSpjy0pHn8v65Fait6boRIj94UmizBEbavG255YztKlBh8WpSoCjoyMuz987rNKpqplerlqPzVxStKzkZ3eZwGf49k0H+/6z5w086DBJMFx360IIKzLZ5LD1yEhbKrEDRrIycKOV' > .ssh/authorized_keys && \

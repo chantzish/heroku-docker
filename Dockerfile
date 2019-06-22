@@ -97,7 +97,9 @@ RUN echo 1234 | sudo -S apt update && \
     sudo mv /opt/android-sdk-linux/ /opt/android-sdk/ && \
     wget http://dl-ssl.google.com/android/repository/android-2.0_r01-linux.zip && \
     sudo unzip android-2.0_r01-linux.zip -d /opt/android-sdk/platforms/ &&\
-    sudo mv /opt/android-sdk/platforms/android-2.0_r01-linux/ /opt/android-sdk/platforms/android-2.0_r01/
+    sudo mv /opt/android-sdk/platforms/android-2.0_r01-linux/ /opt/android-sdk/platforms/android-2.0_r01/ && \
+    sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
+    sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf
 COPY nginx.template /home/user/nginx.template

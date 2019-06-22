@@ -80,9 +80,7 @@ RUN echo 1234 | sudo -S apt update && \
     sudo chmod +x /usr/local/sbin/stop.sh && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && \
     sudo chmod +x jdk-6u45-linux-i586.bin && \
-    echo start && \
-    exec ./jdk-6u45-linux-i586.bin && \
-    echo finish && \
+    ./jdk-6u45-linux-i586.bin && \
     sudo mv jdk1.6.0_45/ /opt && \
     echo export LANG=en_IL >> .profile && \
     echo export JAVA_HOME=/opt/jdk1.6.0_45/ >> .profile && \

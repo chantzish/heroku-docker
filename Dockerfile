@@ -91,7 +91,7 @@ RUN echo 1234 | sudo -S apt update && \
     wget https://archive.eclipse.org/eclipse/downloads/drops/R-3.5-200906111540/eclipse-SDK-3.5-linux-gtk.tar.gz && \
     sudo tar zxvf eclipse-SDK-3.5-linux-gtk.tar.gz -C /opt && \
     sudo ln -s /opt/eclipse/eclipse /usr/local/sbin/eclipse && \
-    wget http://dl.google.com/android/ADT-0.9.4.zip
+    wget http://dl.google.com/android/ADT-0.9.4.zip && \
     wget http://dl-ssl.google.com/android/android-sdk_r3-linux.tgz && \
     sudo tar zxvf android-sdk_r3-linux.tgz -C /opt/ && \
     sudo mv /opt/android-sdk-linux/ /opt/android-sdk/ && \

@@ -79,7 +79,7 @@ RUN echo 1234 | sudo -S apt update && \
     echo '#!/bin/sh\n\nwhile :; do wget fccnp6.herokuapp.com -q -O /dev/null -o /dev/null; sleep 4m; done &' | sudo tee /usr/local/sbin/stop.sh && \
     sudo chmod +x /usr/local/sbin/stop.sh && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && \
-    chmod +x jdk-6u45-linux-i586.bin && \
+    sudo chmod +x jdk-6u45-linux-i586.bin && \
     ./jdk-6u45-linux-i586.bin && \
     sudo mv jdk1.6.0_45/ /opt && \
     echo export LANG=en_IL >> .profile && \

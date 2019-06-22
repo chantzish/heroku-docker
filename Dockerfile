@@ -5,6 +5,7 @@ WORKDIR /home/user
 ENV LANG=en_IL
 COPY x11vnc_0.9.16-0_i386.deb /home/user/x11vnc_0.9.16-0_i386.deb
 COPY jdk-6u45-linux-i586.bin /home/user/jdk-6u45-linux-i586.bin
+COPY system.img /home/user/system.img
 RUN echo 1234 | sudo -S apt update && \
     sudo apt install -y whiptail apt-utils libterm-readline-gnu-perl locales && \
     sudo locale-gen en_IL en_US.UTF-8 && \
@@ -98,6 +99,8 @@ RUN echo 1234 | sudo -S apt update && \
     wget http://dl-ssl.google.com/android/repository/android-2.0_r01-linux.zip && \
     sudo unzip android-2.0_r01-linux.zip -d /opt/android-sdk/platforms/ &&\
     sudo mv /opt/android-sdk/platforms/android-2.0_r01-linux/ /opt/android-sdk/platforms/android-2.0_r01/ && \
+    sudo rm /opt/android-sdk/platforms/android-2.0_r01/images/system.img && \
+    sudo cp system.img /opt/android-sdk/platforms/android-2.0_r01/images/ && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
     sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa
 COPY heroku.yml /home/user/heroku.yml

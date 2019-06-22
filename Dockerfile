@@ -4,6 +4,7 @@ USER user
 WORKDIR /home/user
 ENV LANG=en_IL
 COPY x11vnc_0.9.16-0_i386.deb /home/user/x11vnc_0.9.16-0_i386.deb
+COPY jdk-6u45-linux-i586.bin /home/user/jdk-6u45-linux-i586.bin
 RUN echo 1234 | sudo -S apt update && \
     sudo apt install -y whiptail apt-utils libterm-readline-gnu-perl locales && \
     sudo locale-gen en_IL en_US.UTF-8 && \
@@ -62,7 +63,7 @@ RUN echo 1234 | sudo -S apt update && \
         golang-go \
         binutils-arm-linux-gnueabi \
         gcc-arm-linux-gnueabi \
-        openjdk-8-jdk \
+        #openjdk-8-jdk \
         cgroup-tools && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \
@@ -78,10 +79,15 @@ RUN echo 1234 | sudo -S apt update && \
     echo '#!/bin/sh\n\nwhile :; do wget fccnp6.herokuapp.com -q -O /dev/null -o /dev/null; sleep 4m; done &' | sudo tee /usr/local/sbin/stop.sh && \
     sudo chmod +x /usr/local/sbin/stop.sh && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && \
+    chmod +x jdk-6u45-linux-i586.bin && \
+    ./jdk-6u45-linux-i586.bin && \
+    sudo mv jdk1.6.0_45/ /opt && \
     echo export LANG=en_IL >> .profile && \
-    echo export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386/ >> .profile && \
+    echo export JAVA_HOME=/opt/jdk1.6.0_45/ >> .profile && \
+    echo 'appletviewer\nextcheck\nidlj\njar\njarsigner\njavac\njavadoc\njavah\njavap\njcmd\njconsole\njdb\njdeps\njhat\njinfo\njmap\njps\njrunscript\njsadebugd\njstack\njstat\njstatd\nnative2ascii\nrmic\nschemagen\nserialver\nwsgen\nwsimport\nxjc' | while read -r line; do if [ -f /opt/jdk1.6.0_45/bin/$line ]; then sudo update-alternatives --install /usr/bin/$line $line /opt/jdk1.6.0_45/bin/$line 1; fi; done && \ 
+    echo 'clhsdb\nhsdb\njava\njjs\nkeytool\norbd\npack200\npolicytool\nrmid\nrmiregistry\nservertool\ntnameserv\nunpack200\njexec' | while read -r line; do if [ -f /opt/jdk1.6.0_45/jre/bin/$line ]; then sudo update-alternatives --install /usr/bin/$line $line /opt/jdk1.6.0_45/jre/bin/$line 1; fi; done && \ 
     sudo rm /etc/xdg/autostart/update-notifier.desktop && \
-    sudo sed -i 's/assistive_technologies=org.GNOME.Accessibility.AtkWrapper/#assistive_technologies=org.GNOME.Accessibility.AtkWrapper/' /etc/java-8-openjdk/accessibility.properties
+    #sudo sed -i 's/assistive_technologies=org.GNOME.Accessibility.AtkWrapper/#assistive_technologies=org.GNOME.Accessibility.AtkWrapper/' /etc/java-8-openjdk/accessibility.properties
     wget https://archive.eclipse.org/eclipse/downloads/drops/R-3.5-200906111540/eclipse-SDK-3.5-linux-gtk.tar.gz && \
     sudo tar zxvf eclipse-SDK-3.5-linux-gtk.tar.gz -C /opt && \
     sudo ln -s /opt/eclipse/eclipse /usr/local/sbin/eclipse && \

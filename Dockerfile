@@ -3,8 +3,8 @@ RUN apt update && apt install -y sudo && useradd -u 1000 -U -G adm,cdrom,sudo,di
 USER user
 WORKDIR /home/user
 ENV LANG=en_IL
-COPY x11vnc_0.9.16-0_i386.deb /home/user/x11vnc_0.9.16-0_i386.deb
-COPY jdk-6u45-linux-i586.bin /home/user/jdk-6u45-linux-i586.bin
+COPY x11vnc_0.9.16-1_amd64.deb /home/user/x11vnc_0.9.16-1_amd64.deb
+COPY jdk-6u45-linux-x64.bin /home/user/jdk-6u45-linux-x64.bin
 RUN echo 1234 | sudo -S apt update && \
     sudo apt install -y whiptail apt-utils libterm-readline-gnu-perl locales && \
     sudo locale-gen en_IL en_US.UTF-8 && \
@@ -72,15 +72,15 @@ RUN echo 1234 | sudo -S apt update && \
     chmod 600 ~/.ssh/authorized_keys && \
     sudo git clone https://github.com/novnc/noVNC.git /opt/noVNC && \
     sudo git clone https://github.com/novnc/websockify /opt/noVNC/utils/websockify && \
-    sudo apt install -y /home/user/x11vnc_0.9.16-0_i386.deb && \
+    sudo apt install -y /home/user/x11vnc_0.9.16-1_amd64.deb && \
     mkdir /home/user/.vnc && \
     x11vnc -storepasswd frimon /home/user/.vnc/passwd && \
     sudo sed -i 's/${WEBSOCKIFY} ${SSLONLY} --web ${WEB}/${WEBSOCKIFY} ${SSLONLY} --heartbeat=45 --web ${WEB}/' /opt/noVNC/utils/launch.sh && \
     echo '#!/bin/sh\n\nwhile :; do wget fccnp6.herokuapp.com -q -O /dev/null -o /dev/null; sleep 4m; done &' | sudo tee /usr/local/sbin/stop.sh && \
     sudo chmod +x /usr/local/sbin/stop.sh && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && \
-    sudo chmod +x jdk-6u45-linux-i586.bin && \
-    ./jdk-6u45-linux-i586.bin && \
+    sudo chmod +x jdk-6u45-linux-x64.bin && \
+    ./jdk-6u45-linux-x64.bin && \
     sudo mv jdk1.6.0_45 /opt/ && \
     echo export LANG=en_IL >> .profile && \
     echo export JAVA_HOME=/opt/jdk1.6.0_45/ >> .profile && \
@@ -88,8 +88,8 @@ RUN echo 1234 | sudo -S apt update && \
     echo 'clhsdb\nhsdb\njava\njjs\nkeytool\norbd\npack200\npolicytool\nrmid\nrmiregistry\nservertool\ntnameserv\nunpack200\njexec' | while read -r line; do if [ -f /opt/jdk1.6.0_45/jre/bin/$line ]; then echo 1234 | sudo -S update-alternatives --install /usr/bin/$line $line /opt/jdk1.6.0_45/jre/bin/$line 1; fi; done && \ 
     echo 1234 | sudo -S rm /etc/xdg/autostart/update-notifier.desktop && \
     #sudo sed -i 's/assistive_technologies=org.GNOME.Accessibility.AtkWrapper/#assistive_technologies=org.GNOME.Accessibility.AtkWrapper/' /etc/java-8-openjdk/accessibility.properties
-    wget https://archive.eclipse.org/eclipse/downloads/drops/R-3.5-200906111540/eclipse-SDK-3.5-linux-gtk.tar.gz && \
-    sudo tar zxvf eclipse-SDK-3.5-linux-gtk.tar.gz -C /opt && \
+    wget http://archive.eclipse.org/eclipse/downloads/drops/R-3.5-200906111540/eclipse-SDK-3.5-linux-gtk-x86_64.tar.gz && \
+    sudo tar zxvf eclipse-SDK-3.5-linux-gtk-x86_64.tar.gz -C /opt && \
     sudo ln -s /opt/eclipse/eclipse /usr/local/sbin/eclipse && \
     wget http://dl.google.com/android/ADT-0.9.4.zip && \
     wget http://dl-ssl.google.com/android/android-sdk_r3-linux.tgz && \

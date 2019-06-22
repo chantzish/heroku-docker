@@ -81,12 +81,12 @@ RUN echo 1234 | sudo -S apt update && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && \
     sudo chmod +x jdk-6u45-linux-i586.bin && \
     ./jdk-6u45-linux-i586.bin && \
-    sudo mv jdk1.6.0_45/ /opt && \
+    sudo mv jdk1.6.0_45 /opt/ && \
     echo export LANG=en_IL >> .profile && \
     echo export JAVA_HOME=/opt/jdk1.6.0_45/ >> .profile && \
-    echo 'appletviewer\nextcheck\nidlj\njar\njarsigner\njavac\njavadoc\njavah\njavap\njcmd\njconsole\njdb\njdeps\njhat\njinfo\njmap\njps\njrunscript\njsadebugd\njstack\njstat\njstatd\nnative2ascii\nrmic\nschemagen\nserialver\nwsgen\nwsimport\nxjc' | while read -r line; do if [ -f /opt/jdk1.6.0_45/bin/$line ]; then sudo update-alternatives --install /usr/bin/$line $line /opt/jdk1.6.0_45/bin/$line 1; fi; done && \ 
-    echo 'clhsdb\nhsdb\njava\njjs\nkeytool\norbd\npack200\npolicytool\nrmid\nrmiregistry\nservertool\ntnameserv\nunpack200\njexec' | while read -r line; do if [ -f /opt/jdk1.6.0_45/jre/bin/$line ]; then sudo update-alternatives --install /usr/bin/$line $line /opt/jdk1.6.0_45/jre/bin/$line 1; fi; done && \ 
-    sudo rm /etc/xdg/autostart/update-notifier.desktop && \
+    echo 'appletviewer\nextcheck\nidlj\njar\njarsigner\njavac\njavadoc\njavah\njavap\njcmd\njconsole\njdb\njdeps\njhat\njinfo\njmap\njps\njrunscript\njsadebugd\njstack\njstat\njstatd\nnative2ascii\nrmic\nschemagen\nserialver\nwsgen\nwsimport\nxjc' | while read -r line; do if [ -f /opt/jdk1.6.0_45/bin/$line ]; then echo 1234 | sudo -S update-alternatives --install /usr/bin/$line $line /opt/jdk1.6.0_45/bin/$line 1; fi; done && \ 
+    echo 'clhsdb\nhsdb\njava\njjs\nkeytool\norbd\npack200\npolicytool\nrmid\nrmiregistry\nservertool\ntnameserv\nunpack200\njexec' | while read -r line; do if [ -f /opt/jdk1.6.0_45/jre/bin/$line ]; then echo 1234 | sudo -S update-alternatives --install /usr/bin/$line $line /opt/jdk1.6.0_45/jre/bin/$line 1; fi; done && \ 
+    echo 1234 | sudo -S rm /etc/xdg/autostart/update-notifier.desktop && \
     #sudo sed -i 's/assistive_technologies=org.GNOME.Accessibility.AtkWrapper/#assistive_technologies=org.GNOME.Accessibility.AtkWrapper/' /etc/java-8-openjdk/accessibility.properties
     wget https://archive.eclipse.org/eclipse/downloads/drops/R-3.5-200906111540/eclipse-SDK-3.5-linux-gtk.tar.gz && \
     sudo tar zxvf eclipse-SDK-3.5-linux-gtk.tar.gz -C /opt && \

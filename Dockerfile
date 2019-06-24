@@ -66,7 +66,7 @@ RUN echo 1234 | sudo -S apt update && \
         #openjdk-8-jdk \
         default-jdk \
         thunderbird \
-        libssl-dev libffi-dev python-dev python3-pip python3-venv
+        libssl-dev libffi-dev python-dev python3-pip python3-venv \
         cgroup-tools && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \

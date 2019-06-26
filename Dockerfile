@@ -85,6 +85,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && \
     echo export LANG=en_IL >> .profile && \
     #echo export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 >> .profile && \
+    echo export PATH=$PATH:/home/user/.local/bin/ >> .profile && \
+    pip3 install yowsup && \
     echo 1234 | sudo -S rm /etc/xdg/autostart/update-notifier.desktop && \
     #sudo sed -i 's/assistive_technologies=org.GNOME.Accessibility.AtkWrapper/#assistive_technologies=org.GNOME.Accessibility.AtkWrapper/' /etc/java-8-openjdk/accessibility.properties
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \

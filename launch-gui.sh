@@ -10,5 +10,6 @@ sleep 5s
 DISPLAY=:0 openbox-session &
 sleep 5s
 DISPLAY=:0 eclipse &
+DISPLAY=:0 lxterminal &
 xauth generate :0 . trusted
 DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared &

@@ -93,6 +93,12 @@ RUN echo 1234 | sudo -S apt update && \
     sudo tar zxvf eclipse-SDK-3.5-linux-gtk.tar.gz -C /opt && \
     sudo ln -s /opt/eclipse/eclipse /usr/local/sbin/eclipse && \
     wget http://dl.google.com/android/ADT-0.9.4.zip && \
+    sudo eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo' -installIU com.android.ide.eclipse.adt.feature.group && \
+    sudo eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo' -installIU com.android.ide.eclipse.ddms.feature.group && \
+    sudo mkdir /opt/eclipse/configuration/.settings/ && \
+    echo SHOW_WORKSPACE_SELECTION_DIALOG=false | sudo tee /opt/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs && \
+    git clone https://github.com/chantzish/learn-android.git && \
+    mv learn-android workspace && \
     wget http://dl-ssl.google.com/android/android-sdk_r3-linux.tgz && \
     sudo tar zxvf android-sdk_r3-linux.tgz -C /opt/ && \
     sudo mv /opt/android-sdk-linux/ /opt/android-sdk/ && \

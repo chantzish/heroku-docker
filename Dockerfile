@@ -92,7 +92,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
     sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
     curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh && \
-    printf "%s\n" "$HEROKU_LOGIN" > .netrc
+    printf "%s\n" "$HEROKU_LOGIN" > .netrc && \
+    env
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf
 COPY nginx.template /home/user/nginx.template

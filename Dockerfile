@@ -99,6 +99,8 @@ RUN echo 1234 | sudo -S apt update && \
     echo SHOW_WORKSPACE_SELECTION_DIALOG=false | sudo tee /opt/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs && \
     git clone https://github.com/chantzish/learn-android.git && \
     mv learn-android workspace && \
+    mkdir .android && \
+    echo pingId=1381121918004102010>.android/ddms.cfg && \
     wget http://dl-ssl.google.com/android/android-sdk_r3-linux.tgz && \
     sudo tar zxvf android-sdk_r3-linux.tgz -C /opt/ && \
     sudo mv /opt/android-sdk-linux/ /opt/android-sdk/ && \

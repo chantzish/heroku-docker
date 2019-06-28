@@ -23,6 +23,6 @@ printf "%s\n" "$IDENTITY" > .ssh/id_rsa
 sleep 40s
 DISPLAY=:0 xdotool search Problem key Tab
 sleep 10s
-xdotool search Problem key KP_Enter
+DISPLAY=:0 xdotool search Problem key KP_Enter
 sleep 10s
-xdotool search Java key F5
+DISPLAY=:0 xdotool search Java key F5

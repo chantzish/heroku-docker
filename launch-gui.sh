@@ -20,3 +20,9 @@ DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/
 printf "%s\n" "$HEROKU_LOGIN" > .netrc
 mkdir .ssh
 printf "%s\n" "$IDENTITY" > .ssh/id_rsa
+sleep 40s
+DISPLAY=:0 xdotool search Problem key Tab
+sleep 10s
+xdotool search Problem key KP_Enter
+sleep 10s
+xdotool search Java key F5

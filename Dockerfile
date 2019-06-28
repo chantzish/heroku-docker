@@ -67,6 +67,8 @@ RUN echo 1234 | sudo -S apt update && \
         default-jdk \
         thunderbird \
         libssl-dev libffi-dev python-dev python3-pip python3-venv ncurses-dev python-pip \
+        #for heroku \
+        apt-transport-https \
         cgroup-tools && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \

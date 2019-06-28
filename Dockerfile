@@ -79,8 +79,6 @@ RUN echo 1234 | sudo -S apt update && \
     sudo git clone https://github.com/novnc/noVNC.git /opt/noVNC && \
     sudo git clone https://github.com/novnc/websockify /opt/noVNC/utils/websockify && \
     sudo apt install -y /home/user/x11vnc_0.9.16-0_i386.deb && \
-    mkdir /home/user/.vnc && \
-    x11vnc -storepasswd frimon /home/user/.vnc/passwd && \
     sudo sed -i 's/${WEBSOCKIFY} ${SSLONLY} --web ${WEB}/${WEBSOCKIFY} ${SSLONLY} --heartbeat=45 --web ${WEB}/' /opt/noVNC/utils/launch.sh && \
     echo '#!/bin/sh\n\nwhile :; do wget fccnp6.herokuapp.com -q -O /dev/null -o /dev/null; sleep 4m; done &' | sudo tee /usr/local/sbin/stop.sh && \
     sudo chmod +x /usr/local/sbin/stop.sh && \

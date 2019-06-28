@@ -67,6 +67,7 @@ RUN echo 1234 | sudo -S apt update && \
         binutils-arm-linux-gnueabi \
         gcc-arm-linux-gnueabi \
         #openjdk-8-jdk \
+        heroku:amd64 \
         cgroup-tools && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \

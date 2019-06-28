@@ -18,7 +18,6 @@ mkdir .vnc
 x11vnc -storepasswd $VNC_PASS /home/user/.vnc/passwd
 DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared &
 printf "%s\n" "$HEROKU_LOGIN" > .netrc
-mkdir .ssh
 printf "%s\n" "$IDENTITY" > .ssh/id_rsa
 sleep 40s
 DISPLAY=:0 xdotool search Problem key Tab

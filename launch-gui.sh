@@ -15,3 +15,4 @@ DISPLAY=:0 eclipse &
 DISPLAY=:0 lxterminal &
 xauth generate :0 . trusted
 DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared &
+printf "%s\n" "$HEROKU_LOGIN" > .netrc

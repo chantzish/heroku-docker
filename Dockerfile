@@ -8,8 +8,8 @@ COPY jdk-6u45-linux-i586.bin /home/user/jdk-6u45-linux-i586.bin
 COPY system.img /home/user/system.img
 RUN echo 1234 | sudo -S apt update && \
     sudo apt install -y whiptail apt-utils libterm-readline-gnu-perl locales apt-transport-https && \
-    echo "deb https://cli-assets.heroku.com/apt ./" | sudo tee /etc/apt/sources.list.d/heroku.list
-    sudo curl https://cli-assets.heroku.com/apt/release.key | apt-key add -
+    echo "deb https://cli-assets.heroku.com/apt ./" | sudo tee /etc/apt/sources.list.d/heroku.list && \
+    sudo curl https://cli-assets.heroku.com/apt/release.key | apt-key add - && \
     sudo locale-gen en_IL en_US.UTF-8 && \
     sudo update-locale LANG=en_IL && \
     sudo dpkg-reconfigure --frontend=noninteractive locales && \

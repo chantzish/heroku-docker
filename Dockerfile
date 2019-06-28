@@ -16,18 +16,21 @@ RUN echo 1234 | sudo -S apt update && \
     sudo DEBIAN_FRONTEND=noninteractive apt install -y keyboard-configuration tzdata && \
     echo '# KEYBOARD CONFIGURATION FILE\n\n# Consult the keyboard(5) manual page.\n\nXKBMODEL="pc105"\nXKBLAYOUT="us,il"\nXKBVARIANT=","\nXKBOPTIONS="grp:alt_shift_toggle,grp_led:scroll"\n\nBACKSPACE="guess"' | sudo tee /etc/default/keyboard && \
     sudo dpkg-reconfigure --frontend=noninteractive keyboard-configuration && \
-    sudo dpkg --add-architecture i386 && \
+    sudo dpkg --add-architecture amd64 && \
     sudo apt update && \
     sudo apt install -y \
-        libc6:i386 \
-        libstdc++6:i386 \
-        libssl1.0.0:i386 \
-        libx11-6:i386 \
-        libncurses5:i386 \
-        zlib1g:i386 \
-        libgtk2.0-0:i386 \
-        libsdl1.2debian:i386 \
-        libgtk-3-0:i386 && \
+        libc6:amd64 \
+        libstdc++6:amd64 \
+        libssl1.0.0:amd64 \
+        libx11-6:amd64 \
+        libncurses5:amd64 \
+        zlib1g:amd64 \
+        libgtk2.0-0:amd64 \
+        libsdl1.2debian:amd64 \
+        libgtk-3-0:amd64 \
+        nodejs:amd64 \
+        heroku:amd64 \
+        bzip2 libbz2-1.0 libbz2-1.0:amd64 libdb5.3:amd64 libexpat1:amd64 libffi6:amd64 libgpm2:amd64 libncursesw5:amd64 libpython-stdlib:amd64 libpython2.7-minimal:amd64 libpython2.7-stdlib:amd64 && \
     sudo apt install -y \
         curl \
         binutils \
@@ -67,7 +70,6 @@ RUN echo 1234 | sudo -S apt update && \
         binutils-arm-linux-gnueabi \
         gcc-arm-linux-gnueabi \
         #openjdk-8-jdk \
-        heroku:amd64 \
         cgroup-tools && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \

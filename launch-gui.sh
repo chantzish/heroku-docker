@@ -9,6 +9,8 @@ Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile ./0.log
 sleep 5s
 DISPLAY=:0 openbox-session &
 sleep 5s
+git clone https://github.com/chantzish/learn-android.git
+mv learn-android workspace
 DISPLAY=:0 eclipse &
 DISPLAY=:0 lxterminal &
 xauth generate :0 . trusted

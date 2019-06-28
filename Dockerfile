@@ -97,8 +97,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo' -installIU com.android.ide.eclipse.ddms.feature.group && \
     sudo mkdir /opt/eclipse/configuration/.settings/ && \
     echo SHOW_WORKSPACE_SELECTION_DIALOG=false | sudo tee /opt/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs && \
-    git clone https://github.com/chantzish/learn-android.git && \
-    mv learn-android workspace && \
+    #git clone https://github.com/chantzish/learn-android.git && \
+    #mv learn-android workspace && \
     mkdir .android && \
     echo pingId=1381121918004102010>.android/ddms.cfg && \
     wget http://dl-ssl.google.com/android/android-sdk_r3-linux.tgz && \
@@ -110,7 +110,12 @@ RUN echo 1234 | sudo -S apt update && \
     sudo rm /opt/android-sdk/platforms/android-2.0_r01/images/system.img && \
     sudo cp system.img /opt/android-sdk/platforms/android-2.0_r01/images/ && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
-    sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa
+    sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
+    echo KexAlgorithms +diffie-hellman-group1-sha1 | sudo tee -a /etc/ssh/sshd_config && \
+    echo #HostKeyAlgorithms +ssh-dss | sudo tee -a /etc/ssh/sshd_config && \
+    echo #MACs +hmac-sha1 | sudo tee -a /etc/ssh/sshd_config && \
+    echo Ciphers +aes128-cbc | sudo tee -a /etc/ssh/sshd_config && \
+    sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf
 COPY nginx.template /home/user/nginx.template

@@ -87,6 +87,7 @@ RUN echo 1234 | sudo -S apt update && \
     sudo sed -i 's/allowed_users=console/allowed_users=anybody/' /etc/X11/Xwrapper.config && \
     echo export LANG=en_IL >> .profile && \
     #echo export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 >> .profile && \
+    echo export JAVA_HOME=/usr/lib/jvm/default-java >> .profile && \
     echo export PATH=$PATH:/home/user/.local/bin/ >> .profile && \
     pip3 install yowsup && \
     echo 1234 | sudo -S rm /etc/xdg/autostart/update-notifier.desktop && \

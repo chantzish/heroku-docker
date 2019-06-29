@@ -119,7 +119,9 @@ RUN echo 1234 | sudo -S apt update && \
     echo #MACs +hmac-sha1 | sudo tee -a /etc/ssh/sshd_config && \
     echo Ciphers +aes128-cbc | sudo tee -a /etc/ssh/sshd_config && \
     sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config && \
-    yes "" | /opt/android-sdk/toolandroid create avd -c 512M -t android-5 -n testy
+    yes "" | /opt/android-sdk/toolandroid create avd -c 512M -t android-5 -n testy && \
+    wget https://github.com/novnc/websockify/raw/master/websockify/websocket.py && \
+    wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf
 COPY nginx.template /home/user/nginx.template

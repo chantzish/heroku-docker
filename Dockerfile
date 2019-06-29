@@ -122,6 +122,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config && \
     yes "" | /opt/android-sdk/tools/android list targets && \
     ls /opt/android-sdk/platforms/android-2.0_r01 -a && \
+    cat /opt/android-sdk/platforms/android-2.0_r01/build.prop && \
+    yes "" | /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy && \
     /opt/android-sdk/tools/adb kill-server && \
     wget https://github.com/novnc/websockify/raw/master/websockify/websocket.py && \
     wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py

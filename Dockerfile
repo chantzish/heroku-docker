@@ -69,6 +69,7 @@ RUN echo 1234 | sudo -S apt update && \
         golang-go \
         binutils-arm-linux-gnueabi \
         gcc-arm-linux-gnueabi \
+        tint2 \
         #openjdk-8-jdk \
         cgroup-tools && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \

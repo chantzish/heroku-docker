@@ -115,8 +115,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
     sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
     echo KexAlgorithms +diffie-hellman-group1-sha1 | sudo tee -a /etc/ssh/sshd_config && \
-    echo #HostKeyAlgorithms +ssh-dss | sudo tee -a /etc/ssh/sshd_config && \
-    echo #MACs +hmac-sha1 | sudo tee -a /etc/ssh/sshd_config && \
+    echo "#HostKeyAlgorithms +ssh-dss" | sudo tee -a /etc/ssh/sshd_config && \
+    echo "#MACs +hmac-sha1" | sudo tee -a /etc/ssh/sshd_config && \
     echo Ciphers +aes128-cbc | sudo tee -a /etc/ssh/sshd_config && \
     sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config && \
     yes "" | /opt/android-sdk/tools/android create avd -c 512M -t android-5 -n testy && \

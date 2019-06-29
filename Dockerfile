@@ -96,8 +96,6 @@ RUN echo 1234 | sudo -S apt update && \
     sudo tar zxvf eclipse-SDK-3.5-linux-gtk.tar.gz -C /opt && \
     sudo ln -s /opt/eclipse/eclipse /usr/local/sbin/eclipse && \
     wget http://dl.google.com/android/ADT-0.9.4.zip && \
-    sudo eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo' -installIU com.android.ide.eclipse.adt.feature.group && \
-    sudo eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo' -installIU com.android.ide.eclipse.ddms.feature.group && \
     sudo mkdir /opt/eclipse/configuration/.settings/ && \
     echo SHOW_WORKSPACE_SELECTION_DIALOG=false | sudo tee /opt/eclipse/configuration/.settings/org.eclipse.ui.ide.prefs && \
     #git clone https://github.com/chantzish/learn-android.git && \
@@ -120,11 +118,9 @@ RUN echo 1234 | sudo -S apt update && \
     echo "#MACs +hmac-sha1" | sudo tee -a /etc/ssh/sshd_config && \
     echo Ciphers +aes128-cbc | sudo tee -a /etc/ssh/sshd_config && \
     sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config && \
-    yes "" | /opt/android-sdk/tools/android list targets && \
-    ls /opt/android-sdk/platforms/android-2.0_r01 -a && \
-    cat /opt/android-sdk/platforms/android-2.0_r01/build.prop && \
-    yes "" | /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy && \
-    /opt/android-sdk/tools/adb kill-server && \
+    yes "" | sudo /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy && \
+    sudo eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo,http://download.eclipse.org/eclipse/updates/3.5' -installIU 'com.android.ide.eclipse.adt.feature.group,com.android.ide.eclipse.ddms.feature.group' && \
+    /opt/android-sdk/tools/adb start-server && \
     wget https://github.com/novnc/websockify/raw/master/websockify/websocket.py && \
     wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py
 COPY heroku.yml /home/user/heroku.yml

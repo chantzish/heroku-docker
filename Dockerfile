@@ -114,6 +114,7 @@ RUN echo 1234 | sudo -S apt update && \
     sudo chown -R user:user /opt && \
     sudo chmod 755 -R /opt && \
     /opt/android-sdk/tools/adb start-server && \
+    eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo,http://download.eclipse.org/eclipse/updates/3.5' -installIU 'com.android.ide.eclipse.adt.feature.group,com.android.ide.eclipse.ddms.feature.group' && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
     sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
     echo KexAlgorithms +diffie-hellman-group1-sha1 | sudo tee -a /etc/ssh/sshd_config && \

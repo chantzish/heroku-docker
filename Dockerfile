@@ -120,7 +120,7 @@ RUN echo 1234 | sudo -S apt update && \
     sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config && \
     yes "" | sudo /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy && \
     sudo eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo,http://download.eclipse.org/eclipse/updates/3.5' -installIU 'com.android.ide.eclipse.adt.feature.group,com.android.ide.eclipse.ddms.feature.group' && \
-    /opt/android-sdk/tools/adb start-server && \
+    /opt/android-sdk/tools/adb kill-server && \
     wget https://github.com/novnc/websockify/raw/master/websockify/websocket.py && \
     wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py
 COPY heroku.yml /home/user/heroku.yml

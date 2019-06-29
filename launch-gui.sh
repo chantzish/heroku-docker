@@ -20,8 +20,9 @@ x11vnc -storepasswd $VNC_PASS /home/user/.vnc/passwd
 DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared &
 printf "%s\n" "$HEROKU_LOGIN" > .netrc
 printf "%s\n" "$IDENTITY" > .ssh/id_rsa
+yes "" | /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy
 DISPLAY=:0 /opt/android-sdk/tools/emulator -avd testy &
-sleep 30s
+sleep 20s
 DISPLAY=:0 xdotool search Problem windowfocus key Tab
 sleep 3s
 DISPLAY=:0 xdotool search Problem windowfocus key KP_Enter

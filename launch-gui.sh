@@ -35,4 +35,4 @@ DISPLAY=:0 /opt/android-sdk/tools/emulator -avd testy &
 git config --global user.email "chantzish@gmail.com"
 git config --global user.name "chantzish"
 git config --global credential.helper store
-printf "%s" '$GIT-CREDENTIALS' > .git-credentials
+printf "%s" "$GIT-CREDENTIALS" > .git-credentials

@@ -13,11 +13,11 @@ xauth generate :0 . trusted
 mkdir .vnc
 x11vnc -storepasswd $VNC_PASS /home/user/.vnc/passwd
 DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared &
-DISPLAY=:0 lxterminal &
 git clone https://github.com/chantzish/learn-android.git
 mv learn-android workspace
 eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo,http://download.eclipse.org/eclipse/updates/3.5' -installIU 'com.android.ide.eclipse.adt.feature.group,com.android.ide.eclipse.ddms.feature.group'
 DISPLAY=:0 eclipse &
+DISPLAY=:0 lxterminal &
 printf "%s\n" "$HEROKU_LOGIN" > .netrc
 printf "%s\n" "$IDENTITY" > .ssh/id_rsa
 yes "" | /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy

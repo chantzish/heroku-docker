@@ -110,6 +110,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo mv /opt/android-sdk/platforms/android-2.0_r01-linux/ /opt/android-sdk/platforms/android-2.0_r01/ && \
     sudo rm /opt/android-sdk/platforms/android-2.0_r01/images/system.img && \
     sudo cp system.img /opt/android-sdk/platforms/android-2.0_r01/images/ && \
+    sudo chown -R user:user /opt && \
+    sudo chmod 755 -R /opt && \
     /opt/android-sdk/tools/adb start-server && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
     sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
@@ -118,8 +120,8 @@ RUN echo 1234 | sudo -S apt update && \
     echo "#MACs +hmac-sha1" | sudo tee -a /etc/ssh/sshd_config && \
     echo Ciphers +aes128-cbc | sudo tee -a /etc/ssh/sshd_config && \
     sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config && \
-    yes "" | sudo /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy && \
-    sudo eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo,http://download.eclipse.org/eclipse/updates/3.5' -installIU 'com.android.ide.eclipse.adt.feature.group,com.android.ide.eclipse.ddms.feature.group' && \
+    yes "" | /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy && \
+    eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo,http://download.eclipse.org/eclipse/updates/3.5' -installIU 'com.android.ide.eclipse.adt.feature.group,com.android.ide.eclipse.ddms.feature.group' && \
     /opt/android-sdk/tools/adb kill-server && \
     wget https://github.com/novnc/websockify/raw/master/websockify/websocket.py && \
     wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py

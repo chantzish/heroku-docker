@@ -14,7 +14,7 @@ mkdir .vnc
 x11vnc -storepasswd $VNC_PASS /home/user/.vnc/passwd
 DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared &
 git clone https://github.com/chantzish/learn-android.git
-rm -rf workspace
+#rm -rf workspace
 mv learn-android workspace
 DISPLAY=:0 eclipse &
 DISPLAY=:0 lxterminal &

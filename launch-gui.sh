@@ -32,3 +32,5 @@ DISPLAY=:0 /opt/android-sdk/tools/emulator -avd testy &
 #DISPLAY=:0 xdotool search Java windowclose
 #pkill eclipse
 #DISPLAY=:0 eclipse &
+git config --global user.email "chantzish@gmail.com"
+git config --global user.name "chantzish"

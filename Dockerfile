@@ -15,7 +15,9 @@ RUN echo 1234 | sudo -S apt update && \
     sudo dpkg-reconfigure --frontend=noninteractive locales && \
     sudo DEBIAN_FRONTEND=noninteractive apt install -y keyboard-configuration tzdata && \
     echo '# KEYBOARD CONFIGURATION FILE\n\n# Consult the keyboard(5) manual page.\n\nXKBMODEL="pc105"\nXKBLAYOUT="us,il"\nXKBVARIANT=","\nXKBOPTIONS="grp:alt_shift_toggle,grp_led:scroll"\n\nBACKSPACE="guess"' | sudo tee /etc/default/keyboard && \
-    sudo dpkg-reconfigure --frontend=noninteractive keyboard-configuration && \
+    echo "Asia/Jerusalem" | sudo tee /etc/timezone && \
+    sudo ln -snf /usr/share/zoneinfo/Asia/Jerusalem /etc/localtime && \
+    sudo dpkg-reconfigure --frontend=noninteractive keyboard-configuration tzdata && \
     sudo dpkg --add-architecture amd64 && \
     sudo apt update && \
     sudo apt install -y \

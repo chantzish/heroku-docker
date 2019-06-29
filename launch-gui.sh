@@ -19,7 +19,7 @@ mv learn-android workspace
 DISPLAY=:0 eclipse &
 DISPLAY=:0 lxterminal &
 printf "%s\n" "$HEROKU_LOGIN" > .netrc
-printf "%s\n" "$IDENTITY" > .ssh/id_rsa
+printf "%s" "$IDENTITY" > .ssh/id_rsa
 yes "" | /opt/android-sdk/tools/android create avd -t android-5 -c 512M -n testy
 DISPLAY=:0 /opt/android-sdk/tools/emulator -avd testy &
 #sleep 23s
@@ -35,4 +35,4 @@ DISPLAY=:0 /opt/android-sdk/tools/emulator -avd testy &
 git config --global user.email "chantzish@gmail.com"
 git config --global user.name "chantzish"
 git config --global credential.helper store
-printf "%s" "$GIT_CREDENTIALS" > .git-credentials
+printf "%s\n" "$GIT_CREDENTIALS" > .git-credentials

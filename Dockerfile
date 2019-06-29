@@ -120,7 +120,8 @@ RUN echo 1234 | sudo -S apt update && \
     echo "#MACs +hmac-sha1" | sudo tee -a /etc/ssh/sshd_config && \
     echo Ciphers +aes128-cbc | sudo tee -a /etc/ssh/sshd_config && \
     sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config && \
-    yes "" | /opt/android-sdk/tools/android create avd -c 512M -t android-5 -n testy && \
+    yes "" | /opt/android-sdk/tools/android list targets && \
+    ls /opt/android-sdk/platforms/android-2.0_r01 -a && \
     /opt/android-sdk/tools/adb kill-server && \
     wget https://github.com/novnc/websockify/raw/master/websockify/websocket.py && \
     wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py

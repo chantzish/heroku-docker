@@ -26,6 +26,7 @@ sleep 23s
 DISPLAY=:0 xdotool search Problem windowfocus key Tab
 sleep 3s
 DISPLAY=:0 xdotool search Problem windowfocus key KP_Enter
+sleep 3s
 DISPLAY=:0 xdotool search Java windowfocus key F5
 #DISPLAY=:0 xdotool search Problem windowclose
 #DISPLAY=:0 xdotool search Java windowclose

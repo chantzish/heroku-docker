@@ -112,6 +112,7 @@ RUN echo 1234 | sudo -S apt update && \
     sudo mv /opt/android-sdk/platforms/android-2.0_r01-linux/ /opt/android-sdk/platforms/android-2.0_r01/ && \
     sudo rm /opt/android-sdk/platforms/android-2.0_r01/images/system.img && \
     sudo cp system.img /opt/android-sdk/platforms/android-2.0_r01/images/ && \
+    /opt/android-sdk/tools/adb start-server && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
     sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
     echo KexAlgorithms +diffie-hellman-group1-sha1 | sudo tee -a /etc/ssh/sshd_config && \
@@ -120,6 +121,7 @@ RUN echo 1234 | sudo -S apt update && \
     echo Ciphers +aes128-cbc | sudo tee -a /etc/ssh/sshd_config && \
     sudo sed -i 's/#Port 22/Port 2200/' /etc/ssh/sshd_config && \
     yes "" | /opt/android-sdk/tools/android create avd -c 512M -t android-5 -n testy && \
+    /opt/android-sdk/tools/adb kill-server && \
     wget https://github.com/novnc/websockify/raw/master/websockify/websocket.py && \
     wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py
 COPY heroku.yml /home/user/heroku.yml

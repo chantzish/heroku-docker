@@ -66,7 +66,7 @@ RUN echo 1234 | sudo -S apt update && \
         #openjdk-8-jdk \
         default-jdk \
         thunderbird \
-        libssl-dev libffi-dev python-dev python3-pip python3-venv ncurses-dev python-pip \
+        libssl-dev libffi-dev python-dev ncurses-dev python-pip python3-pip virtualenv \
         #for heroku \
         apt-transport-https \
         cgroup-tools && \

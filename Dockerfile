@@ -63,10 +63,15 @@ RUN echo 1234 | sudo -S apt update && \
         golang-go \
         binutils-arm-linux-gnueabi \
         gcc-arm-linux-gnueabi \
+        g++-arm-linux-gnueabi \
+        binutils-arm-linux-gnueabihf \
+        gcc-arm-linux-gnueabihf \
+        g++-arm-linux-gnueabihf \
+        zlib1g-dev \
         #openjdk-8-jdk \
         default-jdk \
         thunderbird \
-        libssl-dev libffi-dev python-dev ncurses-dev python-pip python3-pip virtualenv \
+        libssl-dev libffi-dev python-dev python3-dev ncurses-dev python-pip python3-pip virtualenv \
         #for heroku \
         apt-transport-https \
         cgroup-tools && \
@@ -89,7 +94,7 @@ RUN echo 1234 | sudo -S apt update && \
     #echo export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 >> .profile && \
     echo export JAVA_HOME=/usr/lib/jvm/default-java >> .profile && \
     echo export PATH=$PATH:/home/user/.local/bin/ >> .profile && \
-    pip3 install yowsup && \
+    #pip3 install yowsup && \
     echo 1234 | sudo -S rm /etc/xdg/autostart/update-notifier.desktop && \
     #sudo sed -i 's/assistive_technologies=org.GNOME.Accessibility.AtkWrapper/#assistive_technologies=org.GNOME.Accessibility.AtkWrapper/' /etc/java-8-openjdk/accessibility.properties
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \

@@ -99,6 +99,35 @@ RUN echo 1234 | sudo -S apt update && \
     #sudo sed -i 's/assistive_technologies=org.GNOME.Accessibility.AtkWrapper/#assistive_technologies=org.GNOME.Accessibility.AtkWrapper/' /etc/java-8-openjdk/accessibility.properties
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
     sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
+    wget https://www.zlib.net/zlib-1.2.11.tar.gz && \
+    tar xzvf zlib-1.2.11.tar.gz && \
+    cd zlib-1.2.11 && \
+    CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ RANLIB=arm-linux-gnueabihf-ranlib LD=arm-linux-gnueabihf-ld ./configure --prefix=/usr/arm-linux-gnueabihf --static && \
+    CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ RANLIB=arm-linux-gnueabihf-ranlib LD=arm-linux-gnueabihf-ld make && \
+    sudo CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ RANLIB=arm-linux-gnueabihf-ranlib LD=arm-linux-gnueabihf-ld make install && \
+    cd /home/user && \
+    rm -r zlib-1.2.11 && \
+    tar xzvf zlib-1.2.11.tar.gz && \
+    cd zlib-1.2.11 && \
+    CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ RANLIB=arm-linux-gnueabihf-ranlib LD=arm-linux-gnueabihf-ld ./configure --prefix=/usr/arm-linux-gnueabihf && \
+    CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ RANLIB=arm-linux-gnueabihf-ranlib LD=arm-linux-gnueabihf-ld make && \
+    sudo CC=arm-linux-gnueabihf-gcc CXX=arm-linux-gnueabihf-g++ RANLIB=arm-linux-gnueabihf-ranlib LD=arm-linux-gnueabihf-ld make install && \
+    cd /home/user && \
+    rm -r zlib-1.2.11 && \
+    tar xzvf zlib-1.2.11.tar.gz && \
+    cd zlib-1.2.11 && \
+    CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ RANLIB=arm-linux-gnueabi-ranlib LD=arm-linux-gnueabi-ld ./configure --prefix=/usr/arm-linux-gnueabi --static && \
+    CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ RANLIB=arm-linux-gnueabi-ranlib LD=arm-linux-gnueabi-ld make && \
+    sudo CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ RANLIB=arm-linux-gnueabi-ranlib LD=arm-linux-gnueabi-ld make install && \
+    cd /home/user && \
+    rm -r zlib-1.2.11 && \
+    tar xzvf zlib-1.2.11.tar.gz && \
+    cd zlib-1.2.11 && \
+    CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ RANLIB=arm-linux-gnueabi-ranlib LD=arm-linux-gnueabi-ld ./configure --prefix=/usr/arm-linux-gnueabi && \
+    CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ RANLIB=arm-linux-gnueabi-ranlib LD=arm-linux-gnueabi-ld make && \
+    sudo CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ RANLIB=arm-linux-gnueabi-ranlib LD=arm-linux-gnueabi-ld make install && \
+    cd /home/user && \
+    rm -r zlib-1.2.11 && \
     curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf

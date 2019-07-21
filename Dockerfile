@@ -74,6 +74,7 @@ RUN echo 1234 | sudo -S apt update && \
         libssl-dev libffi-dev python-dev python3-dev ncurses-dev python-pip python3-pip virtualenv \
         #for heroku \
         apt-transport-https \
+        postgresql
         cgroup-tools && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \

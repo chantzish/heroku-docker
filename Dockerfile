@@ -74,7 +74,8 @@ RUN echo 1234 | sudo -S apt update && \
         libssl-dev libffi-dev python-dev python3-dev ncurses-dev python-pip python3-pip virtualenv \
         #for heroku \
         apt-transport-https \
-        postgresql \
+        #postgresql \
+        sysstat libpq5 ssl-cert postgresql-client-10 postgresql-common \
         cgroup-tools && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \
@@ -129,6 +130,9 @@ RUN echo 1234 | sudo -S apt update && \
     sudo CC=arm-linux-gnueabi-gcc CXX=arm-linux-gnueabi-g++ RANLIB=arm-linux-gnueabi-ranlib LD=arm-linux-gnueabi-ld make install && \
     cd /home/user && \
     rm -r zlib-1.2.11 && \
+    sudo sed -i 's/pg_createcluster -u postgres $VERSION main/echo pg_createcluster -u postgres $VERSION main/' /usr/share/postgresql-common/maintscripts-functions && \
+    sudo apt install -y \
+        postgresql && \
     curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf

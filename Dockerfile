@@ -131,6 +131,7 @@ RUN echo 1234 | sudo -S apt update && \
     cd /home/user && \
     rm -r zlib-1.2.11 && \
     sudo sed -i 's/pg_createcluster -u postgres $VERSION main/echo pg_createcluster -u postgres $VERSION main/' /usr/share/postgresql-common/maintscripts-functions && \
+    sudo sed -i "s/install -d -m 2775 -o postgres -g postgres \/var\/run\/postgresql/install -d -m 2775 -o `whoami` -g `id -gn` \/var\/run\/postgresql/" /usr/share/postgresql-common/init.d-functions && \
     sudo apt install -y \
         postgresql && \
     curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh

@@ -14,3 +14,7 @@ xauth generate :0 . trusted
 DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared &
 printf "%s\n" "$HEROKU_LOGIN" > .netrc
 pg_createcluster -u `whoami` 10 main
+sleep 2s
+service postgresql start
+sleep 5s
+createdb

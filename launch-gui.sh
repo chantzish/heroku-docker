@@ -18,3 +18,4 @@ sed -i "s/install -d -m 2775 -o postgres -g postgres \/var\/run\/postgresql/inst
 service postgresql start
 sleep 5s
 createdb
+env > env

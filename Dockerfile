@@ -65,6 +65,7 @@ RUN echo 1234 | sudo -S apt update && \
         gcc-arm-linux-gnueabi \
         #openjdk-8-jdk \
         cgroup-tools \
+        postgresql \
         libqt4-dev && \
     sudo sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config && \
     mkdir .ssh && \

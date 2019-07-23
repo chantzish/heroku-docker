@@ -136,6 +136,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo apt install -y \
         postgresql \
         pgadmin4 && \
+    sudo sed -i 's/local   all             postgres                                peer/local   all             postgres                                peer map=mymap/' /etc/postgresql/10/main/pg_hba.conf && \
+    echo export PGUSER=postgres >> .profile && \
     curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf

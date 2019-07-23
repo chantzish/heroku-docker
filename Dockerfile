@@ -142,6 +142,7 @@ RUN echo 1234 | sudo -S apt update && \
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf
 COPY nginx.template /home/user/nginx.template
+COPY tut.sh /home/user/tut.sh
 COPY launch.sh /home/user/launch.sh
 COPY launch-gui.sh /home/user/launch-gui.sh
 COPY Dockerfile /home/user/Dockerfile

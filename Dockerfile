@@ -102,6 +102,8 @@ RUN echo 1234 | sudo -S apt update && \
     sudo mv /opt/android-sdk/platforms/android-2.0_r01-linux/ /opt/android-sdk/platforms/android-2.0_r01/ && \
     sudo sed -i 's/load-module module-udev-detect/#load-module module-udev-detect/' /etc/pulse/default.pa && \
     sudo sed -i 's/load-module module-bluetooth-discover/#load-module module-bluetooth-discover/' /etc/pulse/default.pa && \
+    sudo sed -i 's/local   all             postgres                                peer/local   all             postgres                                peer map=mymap/' /etc/postgresql/10/main/pg_hba.conf && \
+    echo export PGUSER=postgres >> .profile && \
     curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf

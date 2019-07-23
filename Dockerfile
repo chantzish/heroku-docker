@@ -132,7 +132,7 @@ RUN echo 1234 | sudo -S apt update && \
     cd /home/user && \
     rm -r zlib-1.2.11 && \
     #sudo sed -i 's/pg_createcluster -u postgres $VERSION main/echo pg_createcluster -u postgres $VERSION main/' /usr/share/postgresql-common/maintscripts-functions && \
-    yes "" | sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+    yes "" | sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh && \
     sudo apt install -y \
         postgresql \
         pgadmin4 && \

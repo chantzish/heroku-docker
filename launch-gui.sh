@@ -9,6 +9,9 @@ Xorg -noreset +extension GLX +extension RANDR +extension RENDER -logfile ./0.log
 sleep 5s
 DISPLAY=:0 openbox-session &
 sleep 5s
-DISPLAY=:0 eclipse &
+#DISPLAY=:0 eclipse &
 xauth generate :0 . trusted
 DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/passwd -rfbport 5900 -shared &
+echo "mymap           `whoami`                  postgres" >> /etc/postgresql/10/main/pg_ident.conf
+service postgresql start
+env > env

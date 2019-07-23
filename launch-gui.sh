@@ -15,3 +15,4 @@ DISPLAY=:0 x11vnc -auth guess -forever -loop -noxdamage -repeat -rfbauth ~/.vnc/
 echo "mymap           `whoami`                  postgres" >> /etc/postgresql/10/main/pg_ident.conf
 service postgresql start
 env > env
+printf "%s\n" "$HEROKU_LOGIN" > .netrc

@@ -128,7 +128,9 @@ RUN echo 1234 | sudo -S apt update && \
     #eclipse -noSplash -application org.eclipse.equinox.p2.director -repository 'jar:file:/home/user/ADT-0.9.4.zip!/,http://download.eclipse.org/releases/galileo,http://download.eclipse.org/eclipse/updates/3.5' -installIU 'com.android.ide.eclipse.adt.feature.group,com.android.ide.eclipse.ddms.feature.group' && \
     /opt/android-sdk/tools/adb kill-server && \
     wget https://github.com/novnc/websockify/raw/master/websockify/websocket.py && \
-    wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py
+    wget https://github.com/chantzish/python-dewebsockify/raw/master/dewebsockify.py && \
+    wget -O- https://telegram.org/dl/desktop/linux32 | sudo tar xJ -C /opt/ && \
+    sudo ln -s /opt/Telegram/Telegram /usr/local/bin/telegram-desktop
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf
 COPY nginx.template /home/user/nginx.template

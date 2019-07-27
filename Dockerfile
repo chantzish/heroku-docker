@@ -138,6 +138,8 @@ RUN echo 1234 | sudo -S apt update && \
         pgadmin4 && \
     sudo sed -i 's/local   all             postgres                                peer/local   all             postgres                                peer map=mymap/' /etc/postgresql/11/main/pg_hba.conf && \
     echo export PGUSER=postgres >> .profile && \
+    wget -O- https://telegram.org/dl/desktop/linux | sudo tar xJ -C /opt/ && \
+    sudo ln -s /opt/Telegram/Telegram /usr/local/bin/telegram-desktop && \
     curl https://cli-assets.heroku.com/install-ubuntu.sh | sudo sh
 COPY heroku.yml /home/user/heroku.yml
 COPY xorg.conf /home/user/xorg.conf
